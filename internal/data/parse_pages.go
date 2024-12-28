@@ -1,4 +1,4 @@
-package collect
+package data
 
 import (
 	"fmt"
@@ -11,36 +11,32 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
-func StartCollect() []FeedItem {
-	var retVal []FeedItem
+func (f *FeedData) CollectAll() {
 
-	pageCount := DefaultPageCount
-	for i := 1; i <= pageCount; i++ {
-		url := fmt.Sprintf("%s/%s/page/%d", BaseURL, DefaultSection, i)
-		res, err := http.Get(url)
-		if err != nil {
-			log.Fatal(err)
+	for _, section := range f.sections {
+		for i := 1; i <= f.pageCount; i++ {
+			url := fmt.Sprintf("%s/%s/page/%d", f.URL, section, i)
+			res, err := http.Get(url)
+			if err != nil {
+				log.Fatal(err)
+			}
+			defer res.Body.Close()
+
+			if res.StatusCode != 200 {
+				log.Fatalf("status code error: %d %s", res.StatusCode, res.Status)
+			}
+
+			f.parsePage(res.Body)
 		}
-		defer res.Body.Close()
-
-		if res.StatusCode != 200 {
-			log.Fatalf("status code error: %d %s", res.StatusCode, res.Status)
-		}
-
-		items := parsePage(res.Body)
-		retVal = append(retVal, items...)
 	}
-
-	return retVal
 }
 
-func parsePage(reader io.Reader) []FeedItem {
+func (f *FeedData) parsePage(reader io.Reader) {
 	doc, err := goquery.NewDocumentFromReader(reader)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	var retVal []FeedItem
 	now := time.Now()
 
 	doc.Find(".post").Each(func(i int, s *goquery.Selection) {
@@ -68,8 +64,7 @@ func parsePage(reader io.Reader) []FeedItem {
 			Content:   strings.TrimSpace(s.Find("div.storycontent").Text()),
 		}
 
-		retVal = append(retVal, item)
+		f.Add(item)
 	})
 
-	return retVal
 }
