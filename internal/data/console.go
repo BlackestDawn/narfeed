@@ -1,6 +1,8 @@
 package data
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func (f *FeedData) PrintToConsole(paginate bool) {
 	for _, item := range f.items {

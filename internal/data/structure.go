@@ -14,10 +14,11 @@ type FeedItem struct {
 }
 
 type FeedData struct {
-	URL       string
-	sections  []string
-	pageCount int
-	items     map[string]FeedItem
+	URL             string
+	sections        []string
+	pageCount       int
+	items           map[string]FeedItem
+	LastDisplayTime time.Time
 }
 
 func NewFeedData(sectionStr string, pageCount int) (*FeedData, error) {

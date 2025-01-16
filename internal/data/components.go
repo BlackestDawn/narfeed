@@ -1,12 +1,11 @@
 package data
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
-func (f *FeedData) Add(item FeedItem) {
-	if _, ok := f.items[item.ID]; ok {
-		return
-	}
-
+func (f *FeedData) add(item FeedItem) {
 	f.items[item.ID] = item
 }
 
@@ -24,15 +23,33 @@ func (f *FeedData) GetItem(id string) (FeedItem, error) {
 	if item, ok := f.items[id]; ok {
 		return item, nil
 	}
-	return FeedItem{}, fmt.Errorf("Could no find item with ID: %s", id)
+	return FeedItem{}, fmt.Errorf("Could not find item with ID: %s", id)
 }
 
 func (f *FeedData) GetAllItems() []FeedItem {
 	var retVal []FeedItem
+	now := time.Now()
 
 	for _, item := range f.items {
 		retVal = append(retVal, item)
 	}
+
+	f.LastDisplayTime = now
+
+	return retVal
+}
+
+func (f *FeedData) GetNewItems() []FeedItem {
+	var retVal []FeedItem
+	now := time.Now()
+
+	for _, item := range f.items {
+		if item.CreatedAt.After(f.LastDisplayTime) {
+			retVal = append(retVal, item)
+		}
+	}
+
+	f.LastDisplayTime = now
 
 	return retVal
 }

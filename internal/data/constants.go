@@ -5,10 +5,14 @@ import (
 	"strings"
 )
 
-const BaseURL = "https://notalwaysright.com"
-const DefaultPageCount = 4
-const DefaultSection = "newest"
-const FeedID = "91f04a6d-ff1c-4d86-8d50-9962f640eda7"
+const (
+	BaseURL          = "https://notalwaysright.com"
+	DefaultPageCount = 4
+	DefaultSection   = "newest"
+	FeedID           = "91f04a6d-ff1c-4d86-8d50-9962f640eda7"
+	FeedTitle        = "Not Always Right"
+	FeedDescription  = ""
+)
 
 type SectionType string
 

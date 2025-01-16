@@ -41,8 +41,6 @@ func (f *FeedData) parsePage(reader io.Reader) {
 
 	doc.Find(".post").Each(func(i int, s *goquery.Selection) {
 		headerField := s.Find("div.post_header").Text()
-		titleField := s.Find("h1.storytitle")
-
 		splitHeader := strings.Split(headerField, "|")
 		timeText := strings.TrimSpace(splitHeader[len(splitHeader)-1])
 		cTime, err := time.Parse("January _2, 2006", timeText)
@@ -51,6 +49,7 @@ func (f *FeedData) parsePage(reader io.Reader) {
 			cTime = now
 		}
 
+		titleField := s.Find("h1.storytitle")
 		link, _ := titleField.Find("a").Attr("href")
 		splitLink := strings.Split(strings.TrimRight(link, "/"), "/")
 		id := splitLink[len(splitLink)-1]
@@ -64,7 +63,7 @@ func (f *FeedData) parsePage(reader io.Reader) {
 			Content:   strings.TrimSpace(s.Find("div.storycontent").Text()),
 		}
 
-		f.Add(item)
+		f.add(item)
 	})
 
 }
