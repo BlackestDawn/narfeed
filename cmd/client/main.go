@@ -18,6 +18,9 @@ func main() {
 	var help bool
 	flag.BoolVarP(&help, "help", "h", false, helpUsage)
 
+	var paginate bool
+	flag.BoolVarP(&paginate, "paginate", "a", false, paginateUsage)
+
 	flag.Parse()
 
 	if help {
@@ -33,5 +36,5 @@ func main() {
 	}
 	items.CollectAll()
 
-	items.PrintToConsole(false)
+	items.PrintToConsole(paginate)
 }

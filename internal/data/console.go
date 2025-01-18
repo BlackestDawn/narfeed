@@ -1,7 +1,9 @@
 package data
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 )
 
 func (f *FeedData) PrintToConsole(paginate bool) {
@@ -11,8 +13,9 @@ func (f *FeedData) PrintToConsole(paginate bool) {
 		fmt.Println(item.Content)
 		fmt.Printf("\n\n")
 		if paginate {
+			reader := bufio.NewReader(os.Stdin)
 			fmt.Println("press enter key to continue...")
-			fmt.Scan()
+			reader.ReadByte()
 		}
 		fmt.Println()
 	}
