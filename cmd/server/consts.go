@@ -1,5 +1,14 @@
 package main
 
 const (
-	defaultListenPort = ":8181"
+	defaultListenPort = "8181"
+)
+
+const (
+	sectionsUsage = "Comma separated string of sections to read from"
+	pagesUsage    = "Number of pages (per section) to read"
+	modeUsage     = "Print output to console instead of providing an atom feed"
+	helpUsage     = "Print (this) help screen"
+	paginateUsage = "Print one post at a time. Only used in console mode"
+	portUsage     = "Port for webserver to listen on. Only used in atom mode"
 )
