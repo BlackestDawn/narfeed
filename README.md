@@ -6,35 +6,11 @@ Minimalistic program to fetch posts from Notalwaysright.com and either display t
 
 Was tired of not having an easy way to keep track of which posts I had already read on Not Always Right (NAR) so wanted to create a way for me to do so. I also wanted to apply all that I had learned from Boot.dev and make it as adaptable as possible.
 
-## Installation
+## Installation and Usage
 
-Clone the repository:
+See the individual pages for the respective variants:
 
-```bash
-git clone https://github.com/BlackestDawn/nar-feed.git
-```
-
-### Console client
-
-Building and running the console client.
-
-```bash
-go build cmd/client
-./client
-```
-
-Available flags:
-
-* `-s` - Comma separated list of sections to pull from. Defaults to "newest"
-* `-p` - Number of pages (per section) to pull, NAR has 5 posts per page. Defaults to 4
-
-### Server version
-
-Comming
-
-### Cloud version
-
-Comming
+[CLI client](https://github.com/BlackestDawn/nar-feed/cmd/client/README.md) | [Server](https://github.com/BlackestDawn/nar-feed/cmd/server/README.md) | [GCP Cloud function](https://github.com/BlackestDawn/nar-feed/cmd/gcp/README.md)) | [AWS Lambda](https://github.com/BlackestDawn/nar-feed/cmd/aws/README.md)
 
 ## Contributing
 
@@ -67,8 +43,8 @@ If you'd like to contribute, please fork the repository and open a pull request 
 ## TODO
 
 * ~~Add pagination for console output~~
-* Actually use CLI parameters
-* Ability to choose/filter sections
+* ~~Actually use CLI parameters~~
+* ~~Ability to choose/filter sections~~
 * Some form of "memory" so it only displays new posts since last run
 * Server version that will continously and peridocally update
 * Support for running as GCP Gloud Function and AWS Lambda
