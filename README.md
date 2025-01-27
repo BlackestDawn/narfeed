@@ -10,7 +10,7 @@ Was tired of not having an easy way to keep track of which posts I had already r
 
 See the individual pages for the respective variants:
 
-[CLI client](https://github.com/BlackestDawn/nar-feed/cmd/client/README.md) | [Server](https://github.com/BlackestDawn/nar-feed/cmd/server/README.md) | [GCP Cloud function](https://github.com/BlackestDawn/nar-feed/cmd/gcp/README.md)) | [AWS Lambda](https://github.com/BlackestDawn/nar-feed/cmd/aws/README.md)
+[CLI client](https://github.com/BlackestDawn/nar-feed/tree/main/cmd/client/) | [Server](https://github.com/BlackestDawn/nar-feed/tree/main/cmd/server/) | [GCP Cloud function](https://github.com/BlackestDawn/nar-feed/tree/main/cmd/gcp/) | [AWS Lambda](https://github.com/BlackestDawn/nar-feed/tree/main/cmd/aws/)
 
 ## Contributing
 
