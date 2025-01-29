@@ -23,7 +23,7 @@ func (f *FeedData) GetItem(id string) (FeedItem, error) {
 	if item, ok := f.items[id]; ok {
 		return item, nil
 	}
-	return FeedItem{}, fmt.Errorf("Could not find item with ID: %s", id)
+	return FeedItem{}, fmt.Errorf("could not find item with ID: %s", id)
 }
 
 func (f *FeedData) GetAllItems() []FeedItem {
