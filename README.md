@@ -27,7 +27,7 @@ You can use the client version to test the general logic, and the server version
 
 ```bash
 go build ./cmd/[client, server]
-./client
+./[client, server]
 ```
 
 or
