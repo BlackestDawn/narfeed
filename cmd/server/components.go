@@ -1,6 +1,8 @@
 package main
 
-import "log"
+import (
+	"fmt"
+)
 
 func (c *serverConf) run() {
 	switch c.mode {
@@ -9,7 +11,8 @@ func (c *serverConf) run() {
 	case "console":
 		c.outputConsole()
 	default:
-		log.Fatalf("Unknown server mode: %s", c.mode)
+		fmt.Printf("Unknown server mode: %s\n", c.mode)
+		c.printHelp(1)
 	}
 
 }
