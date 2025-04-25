@@ -1,6 +1,8 @@
 package main
 
 import (
+	"time"
+
 	"github.com/BlackestDawn/nar-feed/internal/data"
 	"github.com/spf13/pflag"
 )
@@ -14,6 +16,7 @@ type serverConf struct {
 	help     bool
 	flagSet  *pflag.FlagSet
 	feedData *data.FeedData
+	interval time.Duration
 }
 
 func newServerConf() (*serverConf, error) {
@@ -21,7 +24,7 @@ func newServerConf() (*serverConf, error) {
 
 	fd, err := data.NewFeedData(conf.sections, conf.pages)
 	if err != nil {
-		return &serverConf{}, nil
+		return &serverConf{}, err
 	}
 
 	conf.feedData = fd
