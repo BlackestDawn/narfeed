@@ -11,6 +11,7 @@ import (
 
 type settings struct {
 	sections []string
+	tags     []string
 	pages    int
 	paginate bool
 }
@@ -21,6 +22,7 @@ func newSettings() (s *settings, err error) {
 	flags := pflag.NewFlagSet("main", pflag.ContinueOnError)
 
 	sectionsString := flags.StringP("sections", "s", data.DefaultSection, usageSections)
+	tagsString := flags.StringP("tags", "t", data.DefaultTags, usageTags)
 	pages := flags.IntP("pages", "p", data.DefaultPageCount, usagePages)
 	paginate := flags.BoolP("paginate", "a", false, usagePaginate)
 	printHelp := flags.BoolP("help", "h", false, usageHelp)
@@ -37,6 +39,7 @@ func newSettings() (s *settings, err error) {
 	}
 
 	s.sections = strings.Split(*sectionsString, ",")
+	s.tags = strings.Split(*tagsString, ",")
 	s.pages = *pages
 	s.paginate = *paginate
 	return

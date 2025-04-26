@@ -14,7 +14,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	feed, err := data.NewFeedData(settings.sections, settings.pages)
+	feed, err := data.NewFeedData(settings.sections, settings.tags, settings.pages)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
