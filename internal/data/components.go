@@ -26,30 +26,28 @@ func (f *FeedData) GetItem(id string) (FeedItem, error) {
 	return FeedItem{}, fmt.Errorf("could not find item with ID: %s", id)
 }
 
-func (f *FeedData) GetAllItems() []FeedItem {
-	var retVal []FeedItem
+func (f *FeedData) GetAllItems() (returnItems []FeedItem) {
 	now := time.Now()
 
 	for _, item := range f.items {
-		retVal = append(retVal, item)
+		returnItems = append(returnItems, item)
 	}
 
 	f.LastDisplayTime = now
 
-	return retVal
+	return
 }
 
-func (f *FeedData) GetNewItems() []FeedItem {
-	var retVal []FeedItem
+func (f *FeedData) GetNewItems() (returnItems []FeedItem) {
 	now := time.Now()
 
 	for _, item := range f.items {
 		if item.CreatedAt.After(f.LastDisplayTime) {
-			retVal = append(retVal, item)
+			returnItems = append(returnItems, item)
 		}
 	}
 
 	f.LastDisplayTime = now
 
-	return retVal
+	return
 }

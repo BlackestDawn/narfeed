@@ -1,0 +1,49 @@
+package main
+
+import (
+	"fmt"
+	"os"
+	"strings"
+
+	"github.com/BlackestDawn/nar-feed/internal/data"
+	"github.com/spf13/pflag"
+)
+
+type settings struct {
+	sections []string
+	pages    int
+	paginate bool
+}
+
+func newSettings() (s *settings, err error) {
+	s = new(settings)
+
+	flags := pflag.NewFlagSet("main", pflag.ContinueOnError)
+
+	sectionsString := flags.StringP("sections", "s", data.DefaultSection, usageSections)
+	pages := flags.IntP("pages", "p", data.DefaultPageCount, usagePages)
+	paginate := flags.BoolP("paginate", "a", false, usagePaginate)
+	printHelp := flags.BoolP("help", "h", false, usageHelp)
+
+	err = flags.Parse(os.Args[1:])
+	if err != nil {
+		printHelpText(flags)
+		return
+	}
+
+	if *printHelp {
+		printHelpText(flags)
+		os.Exit(0)
+	}
+
+	s.sections = strings.Split(*sectionsString, ",")
+	s.pages = *pages
+	s.paginate = *paginate
+	return
+}
+
+func printHelpText(flags *pflag.FlagSet) {
+	fmt.Println("NAR Feed cli Client")
+	fmt.Println()
+	flags.PrintDefaults()
+}

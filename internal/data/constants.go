@@ -2,7 +2,6 @@ package data
 
 import (
 	"log"
-	"strings"
 )
 
 const (
@@ -32,11 +31,9 @@ func getValidSections() map[SectionType]struct{} {
 }
 
 // takes a comma-separated list of sections and returns a slice of only the valid ones
-func validateSections(section string) []string {
+func validateSections(sections []string) []string {
 	validSect := getValidSections()
 	var validated []string
-
-	sections := strings.Split(section, ",")
 
 	for _, val := range sections {
 		if _, ok := validSect[SectionType(val)]; ok {
