@@ -35,7 +35,12 @@ func (f *FeedData) collectAll() {
 }
 
 func (f *FeedData) parsePage(url string) {
-	res, err := http.Get(url)
+	req, err := http.NewRequest(http.MethodGet, url, nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	res, err := http.DefaultClient.Do(req)
 	if err != nil {
 		log.Fatal(err)
 	}

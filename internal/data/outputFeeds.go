@@ -19,7 +19,7 @@ func (f *FeedData) PrintToConsole(paginate bool) {
 		if paginate {
 			reader := bufio.NewReader(os.Stdin)
 			fmt.Println("press enter key to continue...")
-			reader.ReadByte()
+			_, _ = reader.ReadByte()
 		}
 		fmt.Println()
 	}

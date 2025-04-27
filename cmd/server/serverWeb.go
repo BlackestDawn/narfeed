@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"time"
 
 	"github.com/BlackestDawn/nar-feed/internal/data"
 )
@@ -23,8 +24,9 @@ func runWebServer(feed *data.FeedData, settings *settings) {
 	})
 
 	server := &http.Server{
-		Handler: serverMux,
-		Addr:    ":" + settings.port,
+		Handler:           serverMux,
+		Addr:              ":" + settings.port,
+		ReadHeaderTimeout: time.Second * 20,
 	}
 	log.Println("starting webserver...")
 	log.Print(server.ListenAndServe())

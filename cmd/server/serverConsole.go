@@ -54,6 +54,6 @@ func runConsoleServer(feed *data.FeedData, settings *settings) {
 
 	err = s.Run()
 	if err != nil {
-		logger.Error(err)
+		log.Fatal(logger.Error(err))
 	}
 }
