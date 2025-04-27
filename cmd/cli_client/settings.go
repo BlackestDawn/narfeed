@@ -39,7 +39,9 @@ func newSettings() (s *settings, err error) {
 	}
 
 	s.sections = strings.Split(*sectionsString, ",")
-	s.tags = strings.Split(*tagsString, ",")
+	if *tagsString != "" {
+		s.tags = strings.Split(*tagsString, ",")
+	}
 	s.pages = *pages
 	s.paginate = *paginate
 	return

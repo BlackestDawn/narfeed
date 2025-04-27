@@ -11,10 +11,16 @@ import (
 )
 
 func (f *FeedData) collectAll() {
-	if len(f.tags) == 0 || f.tags[0] == "" {
+	if len(f.tags) == 0 {
+		//if len(f.tags) == 0 || f.tags[0] == "" {
 		for _, section := range f.sections {
 			for i := 1; i <= f.pageCount; i++ {
-				url := fmt.Sprintf("%s/%s/page/%d", f.URL, section, i)
+				var url string
+				if section != "inspirational" {
+					url = fmt.Sprintf("%s/%s/page/%d", f.URL, section, i)
+				} else {
+					url = fmt.Sprintf("%s/tag/%s/page/%d", f.URL, section, i)
+				}
 				f.parsePage(url)
 			}
 		}
