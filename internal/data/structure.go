@@ -16,18 +16,20 @@ type FeedItem struct {
 type FeedData struct {
 	URL             string
 	sections        []string
+	tags            []string
 	pageCount       int
 	items           map[string]FeedItem
 	LastDisplayTime time.Time
 }
 
-func NewFeedData(sectionStr string, pageCount int) (*FeedData, error) {
-	retVal := new(FeedData)
+func NewFeedData(sections []string, tags []string, pageCount int) (feedData *FeedData, err error) {
+	feedData = new(FeedData)
 
-	retVal.URL = BaseURL
-	retVal.sections = validateSections(sectionStr)
-	retVal.pageCount = pageCount
-	retVal.items = make(map[string]FeedItem)
+	feedData.URL = BaseURL
+	feedData.sections = sections
+	feedData.tags = tags
+	feedData.pageCount = pageCount
+	feedData.items = make(map[string]FeedItem)
 
-	return retVal, nil
+	return
 }
