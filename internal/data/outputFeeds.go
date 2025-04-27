@@ -35,7 +35,7 @@ func (f *FeedData) GenerateAtomFeed() (feed *feeds.Feed) {
 		Created:     now,
 	}
 
-	for _, item := range f.GetAllItems() {
+	for _, item := range f.getAllItems() {
 		feed.Add(&feeds.Item{
 			Title:       item.Title,
 			Link:        &feeds.Link{Href: item.URL},

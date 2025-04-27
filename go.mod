@@ -10,5 +10,7 @@ require (
 
 require (
 	github.com/andybalholm/cascadia v1.3.2 // indirect
+	github.com/kardianos/service v1.2.2 // indirect
 	golang.org/x/net v0.32.0 // indirect
+	golang.org/x/sys v0.28.0 // indirect
 )
