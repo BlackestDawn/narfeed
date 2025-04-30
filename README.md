@@ -10,7 +10,7 @@ Was tired of not having an easy way to keep track of which posts I had already r
 
 See the individual pages for the respective variants:
 
-[CLI client](https://github.com/BlackestDawn/nar-feed/tree/main/cmd/client/) | [Server](https://github.com/BlackestDawn/nar-feed/tree/main/cmd/server/) | [GCP Cloud function](https://github.com/BlackestDawn/nar-feed/tree/main/cmd/gcp/) | [AWS Lambda](https://github.com/BlackestDawn/nar-feed/tree/main/cmd/aws/)
+[CLI client](https://github.com/BlackestDawn/nar-feed/tree/main/cmd/client/) | [Server](https://github.com/BlackestDawn/nar-feed/tree/main/cmd/server/) | [GCP Cloud Run function](https://github.com/BlackestDawn/nar-feed/tree/main/cmd/gcp/) | [AWS Lambda](https://github.com/BlackestDawn/nar-feed/tree/main/cmd/aws/)
 
 ## Contributing
 
@@ -27,13 +27,13 @@ You can use the client version to test the general logic, and the server version
 
 ```bash
 go build ./cmd/[client, server]
-./[client, server]
+./[cli_client, server]
 ```
 
 or
 
 ```bash
-go run ./cmd/[client, server]
+go run ./cmd/[cli_client, server]
 ```
 
 ### Submit a pull request
@@ -46,6 +46,6 @@ If you'd like to contribute, please fork the repository and open a pull request 
 * ~~Actually use CLI parameters~~
 * ~~Ability to choose/filter sections~~
 * Some form of "memory" so it only displays new posts since last run
-* Server version that will continously and peridocally update
+* ~~Server version that will continously and peridocally update~~
 * Support for running as GCP Gloud Function and AWS Lambda
 * Ansible and Terraform routines for setting up GCP and AWS

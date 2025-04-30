@@ -13,11 +13,9 @@ func runWebServer(feed *data.FeedData, settings *settings) {
 	serverMux := http.NewServeMux()
 
 	serverMux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		atomFeed := feed.GenerateAtomFeed()
-
-		atom, err := atomFeed.ToAtom()
+		atom, err := feed.GenerateAtomFeed()
 		if err != nil {
-			log.Fatal(err)
+			log.Fatalf("GenerateAtomFeed: %v", err)
 		}
 
 		fmt.Fprint(w, atom)

@@ -25,10 +25,10 @@ func (f *FeedData) PrintToConsole(paginate bool) {
 	}
 }
 
-func (f *FeedData) GenerateAtomFeed() (feed *feeds.Feed) {
+func (f *FeedData) GenerateAtomFeed() (feed string, err error) {
 	f.collectAll()
 	now := time.Now()
-	feed = &feeds.Feed{
+	atomFeed := &feeds.Feed{
 		Title:       FeedTitle,
 		Link:        &feeds.Link{Href: BaseURL},
 		Description: FeedDescription,
@@ -36,7 +36,7 @@ func (f *FeedData) GenerateAtomFeed() (feed *feeds.Feed) {
 	}
 
 	for _, item := range f.getAllItems() {
-		feed.Add(&feeds.Item{
+		atomFeed.Add(&feeds.Item{
 			Title:       item.Title,
 			Link:        &feeds.Link{Href: item.URL},
 			Description: item.Content,
@@ -46,5 +46,6 @@ func (f *FeedData) GenerateAtomFeed() (feed *feeds.Feed) {
 		})
 	}
 
+	feed, err = atomFeed.ToAtom()
 	return
 }
