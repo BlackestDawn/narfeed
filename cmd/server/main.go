@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/BlackestDawn/narfeed"
+	"github.com/BlackestDawn/narfeed/narfeed"
 )
 
 func main() {

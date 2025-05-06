@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/BlackestDawn/narfeed"
+	"github.com/BlackestDawn/narfeed/narfeed"
 )
 
 func runWebServer(feed *narfeed.FeedData, settings *settings) {

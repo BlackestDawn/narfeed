@@ -4,7 +4,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/BlackestDawn/narfeed"
+	"github.com/BlackestDawn/narfeed/narfeed"
 	"github.com/kardianos/service"
 )
 

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/BlackestDawn/narfeed"
+	"github.com/BlackestDawn/narfeed/narfeed"
 )
 
 func main() {

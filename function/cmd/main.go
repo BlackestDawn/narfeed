@@ -5,7 +5,7 @@ import (
 	"os"
 
 	// Blank-import the function package so the init() runs
-	_ "github.com/BlackestDawn/narfeed/"
+	_ "github.com/BlackestDawn/narfeed"
 	"github.com/GoogleCloudPlatform/functions-framework-go/funcframework"
 )
 

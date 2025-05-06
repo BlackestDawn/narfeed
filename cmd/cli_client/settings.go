@@ -5,7 +5,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/BlackestDawn/narfeed"
+	"github.com/BlackestDawn/narfeed/narfeed"
 	"github.com/spf13/pflag"
 )
 
