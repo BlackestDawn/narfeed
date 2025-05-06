@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/BlackestDawn/narfeed/narfeed"
+	"github.com/BlackestDawn/narfeed"
 	"github.com/spf13/pflag"
 )
 
