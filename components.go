@@ -1,4 +1,4 @@
-package nardata
+package narfeed
 
 import (
 	"fmt"

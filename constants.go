@@ -1,4 +1,4 @@
-package nardata
+package narfeed
 
 const (
 	BaseURL          = "https://notalwaysright.com"

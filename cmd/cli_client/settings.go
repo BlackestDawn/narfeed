@@ -5,7 +5,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/BlackestDawn/nar-feed/internal/data"
+	"github.com/BlackestDawn/narfeed"
 	"github.com/spf13/pflag"
 )
 
@@ -21,9 +21,9 @@ func newSettings() (s *settings, err error) {
 
 	flags := pflag.NewFlagSet("main", pflag.ContinueOnError)
 
-	sectionsString := flags.StringP("sections", "s", data.DefaultSection, usageSections)
-	tagsString := flags.StringP("tags", "t", data.DefaultTags, usageTags)
-	pages := flags.IntP("pages", "p", data.DefaultPageCount, usagePages)
+	sectionsString := flags.StringP("sections", "s", narfeed.DefaultSection, usageSections)
+	tagsString := flags.StringP("tags", "t", narfeed.DefaultTags, usageTags)
+	pages := flags.IntP("pages", "p", narfeed.DefaultPageCount, usagePages)
 	paginate := flags.BoolP("paginate", "a", false, usagePaginate)
 	printHelp := flags.BoolP("help", "h", false, usageHelp)
 

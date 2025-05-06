@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/BlackestDawn/nar-feed/internal/data"
+	"github.com/BlackestDawn/narfeed"
 )
 
 func main() {
@@ -12,7 +12,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	feed, err := data.NewFeedData(settings.sections, settings.tags, settings.pages)
+	feed, err := narfeed.NewFeedData(settings.sections, settings.tags, settings.pages)
 	if err != nil {
 		log.Fatal(err)
 	}

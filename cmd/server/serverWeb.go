@@ -6,10 +6,10 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/BlackestDawn/nar-feed/internal/data"
+	"github.com/BlackestDawn/narfeed"
 )
 
-func runWebServer(feed *data.FeedData, settings *settings) {
+func runWebServer(feed *narfeed.FeedData, settings *settings) {
 	serverMux := http.NewServeMux()
 
 	serverMux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {

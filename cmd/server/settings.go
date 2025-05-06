@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/BlackestDawn/nar-feed/internal/data"
+	"github.com/BlackestDawn/narfeed"
 	"github.com/spf13/pflag"
 )
 
@@ -24,9 +24,9 @@ func newSettings() (s *settings, err error) {
 	s = new(settings)
 
 	flags := pflag.NewFlagSet("main", pflag.ContinueOnError)
-	sections := flags.StringP("sections", "s", data.DefaultSection, usageSections)
-	tagsString := flags.StringP("tags", "t", data.DefaultTags, usageTags)
-	pages := flags.IntP("pages", "p", data.DefaultPageCount, usagePages)
+	sections := flags.StringP("sections", "s", narfeed.DefaultSection, usageSections)
+	tagsString := flags.StringP("tags", "t", narfeed.DefaultTags, usageTags)
+	pages := flags.IntP("pages", "p", narfeed.DefaultPageCount, usagePages)
 	paginate := flags.BoolP("paginate", "a", false, usagePaginate)
 	interval := flags.StringP("interval", "i", defaultInterval, usageInterval)
 	mode := flags.StringP("mode", "m", defaultMode, usageMode)

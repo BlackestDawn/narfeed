@@ -4,14 +4,14 @@ import (
 	"log"
 	"time"
 
-	"github.com/BlackestDawn/nar-feed/internal/data"
+	"github.com/BlackestDawn/narfeed"
 	"github.com/kardianos/service"
 )
 
 //var logger service.Logger
 
 type program struct {
-	feed     *data.FeedData
+	feed     *narfeed.FeedData
 	settings *settings
 }
 
@@ -29,7 +29,7 @@ func (p *program) run() {
 	time.Sleep(p.settings.interval)
 }
 
-func runConsoleServer(feed *data.FeedData, settings *settings) {
+func runConsoleServer(feed *narfeed.FeedData, settings *settings) {
 	log.Println("starting console server...")
 
 	svcConfig := &service.Config{

@@ -6,7 +6,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/BlackestDawn/nar-feed/internal/data"
+	"github.com/BlackestDawn/narfeed"
 	"github.com/GoogleCloudPlatform/functions-framework-go/funcframework"
 	"github.com/GoogleCloudPlatform/functions-framework-go/functions"
 )
@@ -20,8 +20,8 @@ func Process(w http.ResponseWriter, r *http.Request) {
 	logger := log.New(funcframework.LogWriter(r.Context()), "", 0)
 
 	settings := setting{
-		Sections: []string{data.DefaultSection},
-		Pages:    data.DefaultPageCount,
+		Sections: []string{narfeed.DefaultSection},
+		Pages:    narfeed.DefaultPageCount,
 	}
 
 	err := r.ParseForm()
@@ -33,9 +33,9 @@ func Process(w http.ResponseWriter, r *http.Request) {
 		logger.Fatalf("json decoding: %v", err)
 	}
 
-	feed, err := data.NewFeedData(settings.Sections, settings.Tags, settings.Pages)
+	feed, err := narfeed.NewFeedData(settings.Sections, settings.Tags, settings.Pages)
 	if err != nil {
-		logger.Fatalf("NewFeedData: %v", err)
+		logger.Fatalf("NewFeednarfeed: %v", err)
 	}
 
 	atomFeed, err := feed.GenerateAtomFeed()
