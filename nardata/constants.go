@@ -1,8 +1,8 @@
-package data
+package nardata
 
 const (
 	BaseURL          = "https://notalwaysright.com"
-	DefaultPageCount = 4
+	DefaultPageCount = 3
 	DefaultSection   = "newest"
 	DefaultTags      = ""
 	FeedID           = "91f04a6d-ff1c-4d86-8d50-9962f640eda7"
